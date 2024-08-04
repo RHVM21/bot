@@ -7,29 +7,29 @@ import Coins from './icons/Coins';
 
 const App: React.FC = () => {
   const levelNames = [
-    "Bronze",    // From 0 to 4999 coins
-    "Silver",    // From 5000 coins to 24,999 coins
-    "Gold",      // From 25,000 coins to 99,999 coins
-    "Platinum",  // From 100,000 coins to 999,999 coins
-    "Diamond",   // From 1,000,000 coins to 2,000,000 coins
-    "Epic",      // From 2,000,000 coins to 10,000,000 coins
-    "Legendary", // From 10,000,000 coins to 50,000,000 coins
-    "Master",    // From 50,000,000 coins to 100,000,000 coins
-    "GrandMaster", // From 100,000,000 coins to 1,000,000,000 coins
-    "Lord"       // From 1,000,000,000 coins to ∞
+    "Bronze",
+    "Silver",
+    "Gold",
+    "Platinum",
+    "Diamond",
+    "Epic",
+    "Legendary",
+    "Master",
+    "GrandMaster",
+    "Lord"
   ];
 
   const levelMinPoints = [
-    0,        // Bronze
-    5000,     // Silver
-    25000,    // Gold
-    100000,   // Platinum
-    1000000,  // Diamond
-    2000000,  // Epic
-    10000000, // Legendary
-    50000000, // Master
-    100000000,// GrandMaster
-    1000000000// Lord
+    0,
+    5000,
+    25000,
+    100000,
+    1000000,
+    2000000,
+    10000000,
+    50000000,
+    100000000,
+    1000000000
   ];
 
   const [levelIndex, setLevelIndex] = useState(6);
@@ -38,17 +38,23 @@ const App: React.FC = () => {
   const pointsToAdd = 11;
   const profitPerHour = 126420;
 
-  
   useEffect(() => {
-    const updateCountdowns = () => {
-    
-    };
-
-    updateCountdowns();
-    const interval = setInterval(updateCountdowns, 60000); // Update every minute
-
+    const pointsPerSecond = Math.floor(profitPerHour / 3600);
+    const interval = setInterval(() => {
+      setPoints(prevPoints => prevPoints + pointsPerSecond);
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [profitPerHour]);
+
+  useEffect(() => {
+    const currentLevelMin = levelMinPoints[levelIndex];
+    const nextLevelMin = levelMinPoints[levelIndex + 1];
+    if (points >= nextLevelMin && levelIndex < levelNames.length - 1) {
+      setLevelIndex(levelIndex + 1);
+    } else if (points < currentLevelMin && levelIndex > 0) {
+      setLevelIndex(levelIndex - 1);
+    }
+  }, [points, levelIndex, levelMinPoints, levelNames.length]);
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -65,73 +71,48 @@ const App: React.FC = () => {
   };
 
   const handleAnimationEnd = (id: number) => {
-    setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
+    setClicks(prevClicks => prevClicks.filter(click => click.id !== id));
   };
-
-  
-
-  useEffect(() => {
-    const currentLevelMin = levelMinPoints[levelIndex];
-    const nextLevelMin = levelMinPoints[levelIndex + 1];
-    if (points >= nextLevelMin && levelIndex < levelNames.length - 1) {
-      setLevelIndex(levelIndex + 1);
-    } else if (points < currentLevelMin && levelIndex > 0) {
-      setLevelIndex(levelIndex - 1);
-    }
-  }, [points, levelIndex, levelMinPoints, levelNames.length]);
-
- 
-  useEffect(() => {
-    const pointsPerSecond = Math.floor(profitPerHour / 3600);
-    const interval = setInterval(() => {
-      setPoints(prevPoints => prevPoints + pointsPerSecond);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [profitPerHour]);
 
   return (
     <div className="bg-custom-orange flex justify-center">
       <div className="w-full bg-custom-orange text-white h-screen font-bold flex flex-col max-w-xl">
         <div className="px-4 z-10">
-        <div className="flex items-center justify-center space-x-2 mt-20">
-        <span className="text-white text-lg font-geologica text-[28px]">MALTIPOO</span>
-      </div>
-      <div className="absolute top-[140px] left-0 right-0 flex justify-center z-0">
-        <div className="yellow-rectangle">
-          Да
-        </div>
-      </div>
+          <div className="flex items-center justify-center space-x-2 mt-20">
+            <span className="text-white text-lg font-geologica text-[28px]">MALTIPOO</span>
+          </div>
+          <div className="absolute top-[140px] left-0 right-0 flex justify-center z-0">
+            <div className="yellow-rectangle">
+              Да
+            </div>
+          </div>
         </div>
 
         <div className="absolute top-[180px] left-0 right-0 bottom-0 bg-white rounded-t-[46px]">
-            <div className="px-4 mt-6 flex justify-between gap-2">
+          <div className="px-4 mt-6 flex justify-between gap-2"></div>
+          <div className="px-4 mt-16 flex justify-center">
+            <div className="px-4 py-2 flex items-center space-x-2">
+              <img src={dollarCoin} alt="Dollar Coin" className="w-10 h-10" />
+              <p className="text-4xl text-[#F1A33C]">{points.toLocaleString()}</p>
             </div>
-
-            <div className="px-4 mt-16 flex justify-center">
-              <div className="px-4 py-2 flex items-center space-x-2">
-                <img src={dollarCoin} alt="Dollar Coin" className="w-10 h-10" />
-                <p className="text-4xl text-[#F1A33C]">{points.toLocaleString()}</p>
-              </div>
-            </div>
-
-            <div className="px-4 mt-14 flex justify-center">
-              <div className="w-60 h-60 p-7 rounded-full flex items-center justify-center" onClick={handleCardClick}>
-                <div className="circle big-circle">
-                  <div className="circle middle-circle">
-                    <div className="circle small-circle">
+          </div>
+          <div className="px-4 mt-14 flex justify-center">
+            <div className="w-60 h-60 p-7 rounded-full flex items-center justify-center" onClick={handleCardClick}>
+              <div className="circle big-circle">
+                <div className="circle middle-circle">
+                  <div className="circle small-circle">
                     <img src={mainCharacter} alt="Main Character" className="small-image" />
-                   </div>
                   </div>
                 </div>
               </div>
             </div>
-             <div className="px-4 mt-16 flex justify-center relative">
-              <button className="start-button">Начать прогулку</button>
-            </div>
           </div>
+          <div className="px-4 mt-16 flex justify-center relative">
+            <button className="start-button">Начать прогулку</button>
+          </div>
+        </div>
       </div>
 
-      {/* Bottom fixed div */}
       <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#FFEBCB] flex justify-around items-center z-50 rounded-3xl text-xs">
         <div className="text-center text-[#85827d] w-1/5 bg-[#1c1f24] m-1 p-2 rounded-2xl">
           <img src={binanceLogo} alt="Exchange" className="w-8 h-8 mx-auto" />

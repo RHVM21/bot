@@ -1,27 +1,22 @@
+/* app.css */
+
+/* Gradient background for progress */
 .progress-gradient {
   background: linear-gradient(to right, #90ef89, #d692dd, #726edd);
 }
 
+/* Glow effect for top elements */
 .top-glow {
   box-shadow: 0 -26px 20px rgba(243, 186, 47, 0.3);
 }
 
-/* Define the keyframes for the blinking animation */
+/* Blinking animation */
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Apply the animation to the dot class */
 .dot {
   width: 6px;
   height: 6px;
@@ -33,12 +28,12 @@
   animation: blink 1s infinite;
 }
 
-
+/* Custom orange background */
 .bg-custom-orange {
   background-color: #F1A33C;
 }
 
-
+/* Circle styling */
 .circle {
   border-radius: 50%;
   display: flex;
@@ -68,44 +63,75 @@
 }
 
 .small-image {
-  width: 75%;  /* Adjust this value as needed to make the image smaller */
-  height: 75%; /* Adjust this value as needed to make the image smaller */
-  object-fit: contain; /* Ensure the image scales correctly */
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
 }
 
+/* Start button styling */
 .start-button {
-  background-color: #4cc550; /* Зеленый фон */
-  color: white; /* Белый текст */
-  padding: 16px 30px; /* Отступы */
-  border: none; /* Без границ */
-  border-radius: 12px; /* Скругленные углы */
-  font-size: 16px; /* Увеличенный размер шрифта */
-  cursor: pointer; /* Курсор в виде руки */
-  position: relative; /* Относительное позиционирование */
-  box-shadow: 0 4px 6px rgba(23, 84, 10, 0.66); /* Тень снизу */
+  background-color: #4cc550;
+  color: white;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(23, 84, 10, 0.66);
 }
 
 .start-button:hover {
-  background-color: #45a049; /* Темно-зеленый при наведении */
+  background-color: #45a049;
 }
 
+/* Yellow rectangle styling */
 .yellow-rectangle {
-  background-color: #FFF1D9; /* Жёлтый цвет фона */
-  color: black; /* Цвет текста */
-  padding: 32px 175px; /* Отступы */
-  border-radius: 12px; /* Скругленные края */
-  text-align: center; /* Центрирование текста */
-  box-shadow: 0 4px 6px rgb(231, 182, 97); /* Тень снизу */
+  background-color: #FFF1D9;
+  color: black;
+  padding: 32px 175px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgb(231, 182, 97);
 }
 
+/* Floating animation */
 @keyframes float {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .yellow-rectangle {
+    padding: 20px 40px; /* Adjust padding for smaller screens */
   }
 
-  100% {
-    opacity: 0;
-    transform: translateY(-50px);
+  .start-button {
+    padding: 12px 24px; /* Adjust padding for smaller screens */
+  }
+
+  .circle {
+    position: relative; /* Adjust for better mobile alignment */
+  }
+
+  .big-circle {
+    max-width: 200px; /* Reduce size for mobile */
+    max-height: 200px; /* Reduce size for mobile */
+  }
+
+  .middle-circle {
+    width: 60%;
+    height: 60%;
+  }
+
+  .small-circle {
+    width: 70%;
+    height: 70%;
+  }
+
+  .small-image {
+    width: 70%;
+    height: 70%;
   }
 }
