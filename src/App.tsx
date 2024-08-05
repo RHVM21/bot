@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { binanceLogo, dollarCoin, hamsterCoin, mainCharacter } from './images';
+import { capsuleLogo, dogLogo, dollarCoin, hamsterCoin, mainCharacter } from './images';
 import Mine from './icons/Mine';
-import Friends from './icons/Friends';
 import Coins from './icons/Coins';
 
 const App: React.FC = () => {
@@ -35,6 +34,7 @@ const App: React.FC = () => {
   const [levelIndex, setLevelIndex] = useState(6);
   const [points, setPoints] = useState(22749365);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
+  const [isWalking, setIsWalking] = useState(false); // Состояние для кнопки
   const pointsToAdd = 11;
   const profitPerHour = 126420;
 
@@ -74,30 +74,35 @@ const App: React.FC = () => {
     setClicks(prevClicks => prevClicks.filter(click => click.id !== id));
   };
 
+  // Функция для переключения состояния кнопки
+  const handleButtonClick = () => {
+    setIsWalking(prevIsWalking => !prevIsWalking);
+  };
+
   return (
     <div className="bg-custom-orange flex justify-center">
       <div className="w-full bg-custom-orange text-white h-screen font-bold flex flex-col max-w-xl">
         <div className="px-4 z-10">
-          <div className="flex items-center justify-center space-x-2 mt-20">
-            <span className="text-white text-lg font-geologica text-[28px]">MALTIPOO</span>
+          <div className="flex items-center justify-center space-x-2 mt-16">
+            <span className="text-white text-lg font-geologica text-[25px]">MALTIPOO</span>
           </div>
-          <div className="absolute top-[140px] left-0 right-0 flex justify-center z-0">
+          <div className="absolute top-[115px] left-0 right-0 flex justify-center z-0">
             <div className="yellow-rectangle">
               Да
             </div>
           </div>
         </div>
 
-        <div className="absolute top-[180px] left-0 right-0 bottom-0 bg-white rounded-t-[46px]">
+        <div className="absolute top-[150px] left-0 right-0 bottom-0 bg-white rounded-t-[25px]">
           <div className="px-4 mt-6 flex justify-between gap-2"></div>
-          <div className="px-4 mt-16 flex justify-center">
+          <div className="px-4 mt-8 flex justify-center">
             <div className="px-4 py-2 flex items-center space-x-2">
               <img src={dollarCoin} alt="Dollar Coin" className="w-10 h-10" />
-              <p className="text-4xl text-[#F1A33C]">{points.toLocaleString()}</p>
+              <p className="text-2xl text-[#F1A33C]">{points.toLocaleString()}</p>
             </div>
           </div>
-          <div className="px-4 mt-14 flex justify-center">
-            <div className="w-60 h-60 p-7 rounded-full flex items-center justify-center" onClick={handleCardClick}>
+          <div className="px-4 mt-0 flex justify-center">
+            <div className="w-80 h-80 p-0 rounded-full flex items-center justify-center" onClick={handleCardClick}>
               <div className="circle big-circle">
                 <div className="circle middle-circle">
                   <div className="circle small-circle">
@@ -107,32 +112,33 @@ const App: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="px-4 mt-16 flex justify-center relative">
-            <button className="start-button">Начать прогулку</button>
+          <div className="px-4 mt-0 flex justify-center relative">
+            <button
+              className={`start-button ${isWalking ? 'bg-orange-500' : ''}`} // Меняем класс кнопки в зависимости от isWalking
+              onClick={handleButtonClick}
+            >
+              {isWalking ? 'Закончить' : 'Начать прогулку'}
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#FFEBCB] flex justify-around items-center z-50 rounded-3xl text-xs">
-        <div className="text-center text-[#85827d] w-1/5 bg-[#1c1f24] m-1 p-2 rounded-2xl">
-          <img src={binanceLogo} alt="Exchange" className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Exchange</p>
+      <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#FFEBCB] flex justify-around items-center z-50 rounded-2xl text-xs"style={{ boxShadow: '0 4px 6px rgb(243, 206, 142)' }}>
+        <div className="text-center text-[#85827d] w-1/6">
+          <img src={capsuleLogo} alt="Exchange" className="w-5 h-5 mx-auto" />
         </div>
-        <div className="text-center text-[#85827d] w-1/5">
-          <Mine className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Mine</p>
+        <div className="text-center text-[#85827d] w-1/6">
+          <Mine className="w-5 h-5 mx-auto" />
         </div>
-        <div className="text-center text-[#85827d] w-1/5">
-          <Friends className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Friends</p>
+        <div className="w-1/3 flex items-center text-[#85827d] bg-[#EEAD64] m-2 p-1 rounded-xl">
+          <img src={dogLogo} alt="Airdrop" className="w-6 h-6 mx-auto" />
+          <span className="ml-1 text-white" style={{ fontSize: '11px' }}>Move to earn</span>
         </div>
-        <div className="text-center text-[#85827d] w-1/5">
-          <Coins className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Earn</p>
+        <div className="text-center text-[#85827d] w-1/6">
+          <Coins className="w-5 h-5 mx-auto" />
         </div>
-        <div className="text-center text-[#85827d] w-1/5">
-          <img src={hamsterCoin} alt="Airdrop" className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Airdrop</p>
+        <div className="text-center text-[#85827d] w-1/6">
+          <img src={hamsterCoin} alt="Airdrop" className="w-5 h-5 mx-auto" />
         </div>
       </div>
 
