@@ -44,24 +44,26 @@
 
 .big-circle {
   background: radial-gradient(circle, #ffebcb89, hwb(36 80% 0% / 0.056));
-  width: 400px; /* Увеличьте размер */
-  height: 400px; /* Увеличьте размер */
+  width: 50vw; /* Adjusted to viewport width */
+  height: 50vw; /* Adjusted to viewport width */
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .middle-circle {
   background: radial-gradient(circle, #FFF1D9, #FFF1D9);
-  width: 75%; /* Эти размеры можно также увеличить при необходимости */
+  width: 75%;
   height: 75%;
 }
 
 .small-circle {
   background: radial-gradient(circle, #FFEBCB, #FFEBCB);
-  width: 80%; /* Эти размеры можно также увеличить при необходимости */
+  width: 80%;
   height: 80%;
 }
 
 .small-image {
-  width: 75%; /* Эти размеры можно также увеличить при необходимости */
+  width: 75%;
   height: 75%;
   object-fit: contain;
 }
@@ -70,21 +72,20 @@
 .start-button {
   background-color: #63af28; /* Зеленый цвет по умолчанию */
   color: white;
-  padding: 16px 30px;
+  padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 1rem;
   cursor: pointer;
   position: relative;
   box-shadow: 0 4px 6px rgba(105, 176, 89, 0.66);
-  transition: background-color 0.3s ease; /* Плавное изменение цвета */
+  transition: background-color 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 180px; /* Фиксированная ширина */
-  height: 44px; /* Фиксированная высота */
+  width: 180px;
+  height: 44px;
 }
-
 
 /* Кнопка для состояния "Закончить" */
 .bg-orange-500 {
@@ -95,17 +96,15 @@
   background-color: #45a049; /* Темно-зеленый цвет при наведении */
 }
 
-
 .bg-orange-500:hover {
   background-color: #e18b2d; /* Темно-оранжевый цвет при наведении */
 }
-
 
 /* Yellow rectangle styling */
 .yellow-rectangle {
   background-color: #FFF1D9;
   color: black;
-  padding: 32px 175px;
+  padding: 2rem 3rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 6px rgb(243, 206, 142);
@@ -120,11 +119,11 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .yellow-rectangle {
-    padding: 25px 165px; /* Adjust padding for smaller screens */
+    padding: 1.5rem 2rem; /* Adjust padding for smaller screens */
   }
 
   .start-button {
-    padding: 8px 24px; /* Adjust padding for smaller screens */
+    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
   }
 
   .circle {
@@ -137,17 +136,41 @@
   }
 
   .middle-circle {
-    width: 75%; /* Увеличьте размер */
-    height: 75%; /* Увеличьте размер */
+    width: 75%;
+    height: 75%;
   }
 
   .small-circle {
-    width: 80%; /* Увеличьте размер */
-    height: 80%; /* Увеличьте размер */
+    width: 80%;
+    height: 80%;
   }
 
   .small-image {
-    width: 70%; /* Увеличьте размер */
-    height: 70%; /* Увеличьте размер */
+    width: 70%;
+    height: 70%;
   }
+}
+
+@media (max-width: 480px) {
+  .start-button {
+    font-size: 0.875rem; /* Smaller font size for very small screens */
+    width: 150px; /* Adjust button width */
+    height: 40px; /* Adjust button height */
+  }
+
+  .yellow-rectangle {
+    padding: 1rem 1.5rem; /* Further adjust padding */
+  }
+
+  .big-circle {
+    max-width: 250px; /* Further reduce size for very small screens */
+    max-height: 250px; /* Further reduce size for very small screens */
+  }
+}
+
+/* Disable zooming on mobile devices */
+@viewport {
+  zoom: 1;
+  width: device-width;
+  initial-scale: 1;
 }
