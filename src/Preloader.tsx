@@ -1,24 +1,34 @@
 import React, { useEffect } from 'react';
+import { mascot, title } from './images';
 
 interface PreloaderProps {
   onReady: () => void;
 }
 
 const Preloader: React.FC<PreloaderProps> = ({ onReady }) => {
-  useEffect(() => {
-    // Задержка для имитации предзагрузки (например, 2 секунды)
-    const timer = setTimeout(() => {
-      onReady();
-    }, 2000);
-
-    // Очистка таймера при размонтировании компонента
-    return () => clearTimeout(timer);
-  }, [onReady]);
+    useEffect(() => {
+        console.log('Preloader start');
+        const timer = setTimeout(() => {
+          console.log('Preloader done'); // Проверка вызова onReady
+          onReady();
+        }, 1000); // Увеличьте время до 3000 для теста
+      
+        return () => clearTimeout(timer);
+      }, [onReady]);
 
   return (
     <div className="preloader">
-      <div className="hello-screen">
-        <h1>Hello</h1>
+      <div className="preloader-section top">
+        <h1 className="greeting">Привет</h1>
+      </div>
+      <div className="preloader-section center">
+        <img src={mascot} alt="Mascot" className="mascot-image" />
+        <img src={title} alt="Title" className="title-image" />
+      </div>
+      <div className="preloader-section bottom">
+        <div className="loading-text">
+             Загрузка<span className="dot"></span><span className="dot"></span><span className="dot"></span>
+        </div>
       </div>
     </div>
   );

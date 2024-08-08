@@ -1,3 +1,156 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.active {
+  font-weight: bold;
+  color: blue;
+}
+
+/* Preloader Styles */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFB423;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preloader-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.greeting {
+  font-size: 36px;
+  color: white;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mascot-image {
+  width: 130px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.title-image {
+  width: 200px;
+  height: auto;
+}
+
+.bottom {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-left: 3px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: blink 1.5s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes blink {
+  0%, 20% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
 /* Gradient background for progress */
 .progress-gradient {
   background: linear-gradient(to right, #90ef89, #d692dd, #726edd);
@@ -8,16 +161,9 @@
   box-shadow: 0 -26px 20px rgba(243, 186, 47, 0.3);
 }
 
-/* Blinking animation */
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
+.doew {
+  width: 3px;
+  height: 3px;
   background-color: white;
   border-radius: 50%;
   position: absolute;
@@ -42,9 +188,9 @@
 
 .big-circle {
   background: radial-gradient(circle, #ffebcb89, hwb(36 80% 0% / 0.056));
-  width: 50vw; /* Используйте относительные единицы */
-  height: 50vw; /* Используйте относительные единицы */
-  max-width: 400px; /* Максимальные размеры для больших экранов */
+  width: 50vw;
+  height: 50vw;
+  max-width: 400px;
   max-height: 400px;
 }
 
@@ -68,7 +214,7 @@
 
 /* Start button styling */
 .start-button {
-  background-color: #63af28; /* Зеленый цвет по умолчанию */
+  background-color: #63af28;
   color: white;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -85,17 +231,16 @@
   height: 44px;
 }
 
-/* Кнопка для состояния "Закончить" */
 .bg-orange-500 {
-  background-color: #F1A33C; /* Оранжевый цвет */
+  background-color: #F1A33C;
 }
 
 .start-button:hover {
-  background-color: #45a049; /* Темно-зеленый цвет при наведении */
+  background-color: #45a049;
 }
 
 .bg-orange-500:hover {
-  background-color: #e18b2d; /* Темно-оранжевый цвет при наведении */
+  background-color: #e18b2d;
 }
 
 /* Yellow rectangle styling */
@@ -117,20 +262,16 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .yellow-rectangle {
-    padding: 1.5rem 2rem; /* Adjust padding for smaller screens */
+    padding: 1.5rem 2rem;
   }
 
   .start-button {
-    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
-  }
-
-  .circle {
-    position: relative; /* Adjust for better mobile alignment */
+    padding: 0.5rem 1rem;
   }
 
   .big-circle {
-    max-width: 300px; /* Соответственно измените размер для мобильных устройств */
-    max-height: 300px; /* Соответственно измените размер для мобильных устройств */
+    max-width: 300px;
+    max-height: 300px;
   }
 
   .middle-circle {
@@ -151,18 +292,18 @@
 
 @media (max-width: 480px) {
   .start-button {
-    font-size: 0.875rem; /* Smaller font size for very small screens */
-    width: 150px; /* Adjust button width */
-    height: 40px; /* Adjust button height */
+    font-size: 0.875rem;
+    width: 150px;
+    height: 40px;
   }
 
   .yellow-rectangle {
-    padding: 1rem 1.5rem; /* Further adjust padding */
+    padding: 1rem 1.5rem;
   }
 
   .big-circle {
-    max-width: 250px; /* Further reduce size for very small screens */
-    max-height: 250px; /* Further reduce size for very small screens */
+    max-width: 250px;
+    max-height: 250px;
   }
 }
 

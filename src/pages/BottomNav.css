@@ -1,0 +1,14 @@
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Высота навигации */
+    background: linear-gradient(to top, rgba(255, 235, 203, 0), rgba(255, 235, 203, 0.9)); /* Градиентный фон от прозрачного вверху до полупрозрачного внизу */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50; /* Убедитесь, что навигация сверху других элементов */
+    box-shadow: 0 4px 6px rgba(243, 206, 142, 0.4); /* Полупрозрачная тень */
+  }
