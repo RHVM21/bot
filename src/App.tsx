@@ -3,6 +3,7 @@ import './App.css';
 import { capsuleLogo, dogLogo, dollarCoin, hamsterCoin, mainCharacter } from './images';
 import Mine from './icons/Mine';
 import Coins from './icons/Coins';
+import Preloader from './Preloader';
 
 const App: React.FC = () => {
   const levelNames = [
@@ -34,7 +35,8 @@ const App: React.FC = () => {
   const [levelIndex, setLevelIndex] = useState(6);
   const [points, setPoints] = useState(22749365);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
-  const [isWalking, setIsWalking] = useState(false); // Состояние для кнопки
+  const [isWalking, setIsWalking] = useState(false);
+  const [loading, setLoading] = useState(true); // Состояние загрузки
   const pointsToAdd = 11;
   const profitPerHour = 126420;
 
@@ -74,10 +76,17 @@ const App: React.FC = () => {
     setClicks(prevClicks => prevClicks.filter(click => click.id !== id));
   };
 
-  // Функция для переключения состояния кнопки
   const handleButtonClick = () => {
     setIsWalking(prevIsWalking => !prevIsWalking);
   };
+
+  const handlePreloaderDone = () => {
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <Preloader onReady={handlePreloaderDone} />;
+  }
 
   return (
     <div className="bg-custom-orange flex justify-center">
@@ -114,7 +123,7 @@ const App: React.FC = () => {
           </div>
           <div className="px-4 mt-0 flex justify-center relative">
             <button
-              className={`start-button ${isWalking ? 'bg-orange-500' : ''}`} // Меняем класс кнопки в зависимости от isWalking
+              className={`start-button ${isWalking ? 'bg-orange-500' : ''}`}
               onClick={handleButtonClick}
             >
               {isWalking ? 'Закончить' : 'Начать прогулку'}
@@ -123,7 +132,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#FFEBCB] flex justify-around items-center z-50 rounded-2xl text-xs"style={{ boxShadow: '0 4px 6px rgb(243, 206, 142)' }}>
+      <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#FFEBCB] flex justify-around items-center z-50 rounded-2xl text-xs" style={{ boxShadow: '0 4px 6px rgb(243, 206, 142)' }}>
         <div className="text-center text-[#85827d] w-1/6">
           <img src={capsuleLogo} alt="Exchange" className="w-5 h-5 mx-auto" />
         </div>
