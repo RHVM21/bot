@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { capsuleLogo, dogLogo, dogLogoW, friends, friendsW, rating, rocketW, ratingW, rocket } from './images'; // Импортируем изображения для активных и неактивных состояний
+import { capsuleLogo, dogLogo, dogLogoW, capsuleLogoW, friends, friendsW, rating, rocketW, ratingW, rocket } from './images'; // Импортируем изображения для активных и неактивных состояний
 
 const BottomNav: React.FC = () => {
   return (
@@ -8,25 +8,25 @@ const BottomNav: React.FC = () => {
       
       <NavLink
         to="/main"
-        className={({ isActive }) =>
-          ` m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
+        className={({ isActive }: { isActive: boolean }) =>
+          `m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
         }
       >
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
           <>
-            <img src={capsuleLogo} alt="Exchange" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
-            {isActive && <span className="ml-2 text-white text-xs">Page 1</span>}
+            <img src={isActive ? capsuleLogoW : capsuleLogo} alt="Exchange" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
+            {isActive && <span className="ml-2 text-white text-xs">Главная</span>}
           </>
         )}
       </NavLink>
 
       <NavLink
         to="/lesson"
-        className={({ isActive }) =>
+        className={({ isActive }: { isActive: boolean }) =>
           `m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
         }
       >
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
           <>
             <img src={isActive ? rocketW : rocket} alt="Rocket" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
             {isActive && <span className="ml-2 text-white text-xs">Задания</span>}
@@ -36,11 +36,11 @@ const BottomNav: React.FC = () => {
 
       <NavLink
         to="/move"
-        className={({ isActive }) =>
+        className={({ isActive }: { isActive: boolean }) =>
           `m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
         }
       >
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
           <>
             <img src={isActive ? dogLogo : dogLogoW} alt="Move to earn" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
             {isActive && <span className="ml-2 text-white text-xs">Move to earn</span>}
@@ -50,11 +50,11 @@ const BottomNav: React.FC = () => {
 
       <NavLink
         to="/rating"
-        className={({ isActive }) =>
+        className={({ isActive }: { isActive: boolean }) =>
           `m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
         }
       >
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
           <>
             <img src={isActive ? ratingW : rating} alt="Rating" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
             {isActive && <span className="ml-2 text-white text-xs">Рейтинг</span>}
@@ -64,11 +64,11 @@ const BottomNav: React.FC = () => {
 
       <NavLink
         to="/friends"
-        className={({ isActive }) =>
+        className={({ isActive }: { isActive: boolean }) =>
           `m-2 p-2 rounded-xl flex items-center justify-center transition-all duration-300 ease-in-out ${isActive ? 'bg-[#EEAD64] text-white shadow-md' : 'text-[#85827d]'}`
         }
       >
-        {({ isActive }) => (
+        {({ isActive }: { isActive: boolean }) => (
           <>
             <img src={isActive ? friendsW : friends} alt="Friends" className={`w-6 h-6 transition-all duration-300 ease-in-out`} />
             {isActive && <span className="ml-1 text-white text-xs">Friends</span>}

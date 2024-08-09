@@ -16,8 +16,26 @@ import rating from "./rating-logo.png"
 import ratingW from "./ratingW-logo.png"
 import friends from "./friends-logo.png"
 import friendsW from "./friendsW-logo.png"
+import fire from "./fire.png"
+import telegram from "./telegram.png"
+import twitter from "./twitter.png"
+import thumbup from "./thumb-up.png"
+import gift from "./gift.png"
+import capsuleLogoW from "./capsule-logoW.png"
+import line from "./line.png"
+import statusS from "./status_silver.png"
+import ellipse from "./ellipse.png"
 
 export {
+    ellipse,
+    statusS,
+    line,
+    capsuleLogoW,
+    gift,
+    thumbup,
+    twitter,
+    telegram,
+    fire,
     dogLogoW,
     rocketW,
     ratingW,

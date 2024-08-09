@@ -1,5 +1,5 @@
 .page-container {
-  background-color: rgb(230, 160, 31);
+  background-color: #F1A33C;
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
@@ -8,12 +8,13 @@
 
 .header {
   text-align: center;
-  margin-bottom:40px;
+  margin-bottom:30px;
+  padding-top: 25px; /* Добавляем отступ сверху, чтобы опустить заголовок */
 }
 
 .header h1 {
   color: white; /* Белый цвет текста */
-  font-size: 2rem; /* Увеличенный размер шрифта */
+  font-size: 1.6rem; /* Увеличенный размер шрифта */
   margin: 0; /* Убрать отступы по умолчанию */
   font-family: 'Geologica', sans-serif;
 }
@@ -28,7 +29,7 @@
 }
 
 .banner-image {
-  max-width: 90%;
+  max-width: 100%;
   height: auto;
   margin-bottom: 10px; /* Отступ после изображения */
 }
@@ -50,9 +51,9 @@
 
 .scroll-item {
   background-color: white;
-  width: 90%; /* Ширина блока */
+  width: 100%; /* Ширина блока */
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -71,6 +72,6 @@
   align-items: center;
   z-index: 2; /* Уменьшенный z-index для уменьшения перекрытия контента */
   border-radius: 0px 0px 0 0;
-  backdrop-filter: blur(10px); /* Размытие фона за навигацией */
+  backdrop-filter: blur(5px); /* Размытие фона за навигацией */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшенная тень для более мягкого эффекта */
 }

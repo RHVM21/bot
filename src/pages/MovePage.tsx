@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { dollarCoin, mainCharacter } from '../images'; // Убедитесь, что путь к изображениям правильный
-import Preloader from '../Preloader'; // Убедитесь, что путь к Preloader правильный
 import BottomNav from '../BottomNav'; // Импортируйте BottomNav
 
 const MovePage: React.FC = () => {
@@ -36,7 +35,6 @@ const MovePage: React.FC = () => {
   const [points, setPoints] = useState(22749365);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
   const [isWalking, setIsWalking] = useState(false);
-  const [loading, setLoading] = useState(true); // Состояние загрузки
   const pointsToAdd = 11;
   const profitPerHour = 126420;
 
@@ -80,16 +78,7 @@ const MovePage: React.FC = () => {
     setIsWalking(prevIsWalking => !prevIsWalking);
   };
 
-  const handlePreloaderDone = () => {
-    console.log('Preloader done called');
-    setTimeout(() => setLoading(false), 500); // Отложенное отключение загрузки
-  };
-
-  if (loading) {
-    return <Preloader onReady={handlePreloaderDone} />;
-  }
-
-  console.log('Loading is false, rendering main content');
+  
 
   return (
     <div className="bg-custom-orange flex justify-center">
